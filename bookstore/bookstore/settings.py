@@ -25,7 +25,7 @@ SECRET_KEY = '6z%hul43t*lfx!jxm#tk2xe4(w#!^2)g&sox7ka8nch^6zha)m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
+    'users.apps.UsersConfig',#用户模块
+    'books.apps.BooksConfig',#商品模块
+    'tinymce',#富文本编辑器
 ]
 
 MIDDLEWARE = [
@@ -54,6 +56,9 @@ ROOT_URLCONF = 'bookstore.urls'
 
 TEMPLATES = [
     {
+#        'theme':'advanced',#富文本编辑
+#        'width':600,
+#        'height':400,
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS':[os.path.join(BASE_DIR,'templates')],
         'APP_DIRS': True,
@@ -123,6 +128,6 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIR=[os.path.join(BASE_DIR,'static')]
-
+STATICFILES_DIR=[os.path.join(BASE_DIR,'static')]#帮助调试时使用的静态文件目录
+MEDIA_ROOT = os.path.join(BASE_DIR,"static")#配置图片存储路径
 
